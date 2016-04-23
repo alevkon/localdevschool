@@ -24,7 +24,7 @@ module.exports.connections = {
         adapter: "sails-mongo",
         host: "localhost",
         port: 27017,
-        database: "semanticle"
+        database: "school"
         // user: "username",
         // password: "password",
     }
