@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="page"><%- content %></div>
+
+    <!--SCRIPTS-->
+    <script src="/lib/lodash.js"></script>
+    <script src="/lib/react.js"></script>
+    <script src="/lib/react-dom.js"></script>
+    <script src="/lib/History.js"></script>
+    <script src="/lib/ReactRouter.js"></script>
+    <script src="/lib/mobile-detect.js"></script>
+    <script src="/lib/reflux.js"></script>
+    <script src="/lib/fetch.js"></script>
+    <script src="/lib/es6-promise.js"></script>
+    <script src="/core/mixins/inject-actions.js"></script>
+    <script src="/core/stores/DOM.js"></script>
+    <script src="/core/stores/context.js"></script>
+    <script src="/core/stores/dom.js"></script>
+    <script src="/core/stores/registry.js"></script>
+    <script src="/core/stores/router.js"></script>
+    <script src="/core/stores/saver.js"></script>
+    <script src="/core/app.js"></script>
+    <script src="/core/pages/404/404.js"></script>
+    <script src="/core/pages/author/author.js"></script>
+    <script src="/core/pages/author/authorCourse/authorCourse.js"></script>
+    <script src="/core/pages/author/authorIndex.js"></script>
+    <script src="/core/pages/author/authorUnit/authorUnit.js"></script>
+    <script src="/core/pages/index/index.js"></script>
+    <!--SCRIPTS END-->
+
+    <script type="text/javascript">
+        App.start(<%- JSON.stringify(data) %>);
+    </script>
+</body>
