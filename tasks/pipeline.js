@@ -46,7 +46,7 @@ var jsCore = []
 var jsLibs = [
   "lib/lodash/dist/lodash.js",
   "lib/react/react.js",
-  "lib/react/react-dom.js",
+  "../node_modules/react-dom/dist/react-dom.js",
   "../node_modules/history/umd/History.js",
   "../node_modules/react-router/umd/ReactRouter.js",
   //"lib/react-router/ReactRouter.min.js",
