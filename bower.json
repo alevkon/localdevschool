@@ -1,0 +1,23 @@
+{
+  "name": "src",
+  "version": "0.0.0",
+  "authors": [
+    "alevkon <alevkon@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reflux": "~0.3.0",
+    "lodash": "~2.4.1",
+    "react": "~0.14.2",
+    "bootstrap": "~3.3.5",
+    "es6-promise": "git://github.com/jakearchibald/es6-promise#3.0.2"
+  }
+}
