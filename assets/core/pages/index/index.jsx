@@ -6,6 +6,10 @@ var Saver = require("../../stores/saver");
 
 module.exports = Registry.registerPage(React.createClass({
   displayName: "index",
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57517bb7ebde3458d19a022bc84459c3382ece46
   mixins: [
     Reflux.listenTo(Context, "onContextEvent")
   ],
@@ -17,11 +21,19 @@ module.exports = Registry.registerPage(React.createClass({
         break;
     }
   },
+<<<<<<< HEAD
   render() {
     var self = this;
     var data = this.props.params.data;
     //console.log(this.props+"  index");
     var markstring = "Hello.\n\n* This is an example" // пример, стереть
+=======
+
+  render() {
+    var self = this;
+    var data = this.props.params.data;
+
+>>>>>>> 57517bb7ebde3458d19a022bc84459c3382ece46
     return <div className="p-index row">
       <div className="col-md-8 col-md-offset-2">
         <h1>Local development school</h1>
@@ -32,10 +44,15 @@ module.exports = Registry.registerPage(React.createClass({
           <a className="btn btn-danger" href="/mentor" role="button">Start as mentor</a>
         </p>
       </div>
+<<<<<<< HEAD
       <Registry.controls.saver
         ver={{orig:"pos1", curr:"pos2"}}
         identity="unit"
         id="id">Save unit</Registry.controls.saver>
     </div>;
   },
+=======
+    </div>
+  }
+>>>>>>> 57517bb7ebde3458d19a022bc84459c3382ece46
 }));

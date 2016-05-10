@@ -47,7 +47,10 @@ var jsLibs = [
   "lib/lodash/dist/lodash.js",
   "lib/react/react.js",
   "../node_modules/react-dom/dist/react-dom.js",
+<<<<<<< HEAD
   "../node_modules/markdown/bin/md2html.js",
+=======
+>>>>>>> 57517bb7ebde3458d19a022bc84459c3382ece46
   "../node_modules/history/umd/History.js",
   "../node_modules/react-router/umd/ReactRouter.js",
   //"lib/react-router/ReactRouter.min.js",
