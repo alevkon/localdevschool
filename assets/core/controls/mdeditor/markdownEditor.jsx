@@ -1,7 +1,7 @@
 var React = require("react");
 var Reflux = require("reflux");
 var Registry = require("../../stores/registry");
-//var markdown = require( "markdown" ).markdown;
+var markdown = require( "markdown" ).markdown;
 module.exports = Registry.registerControl(React.createClass({
     displayName: "markdownEditor",
     getInitialState() {

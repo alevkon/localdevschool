@@ -14,14 +14,6 @@ module.exports = Registry.registerControl(React.createClass({
         return <div>
                 <button type="button" /*or?*/ /*role="button"*/ className="btn btn-success" disabled={this.state.condition === true ? "disabled" : ""} onClick={this.onButtuonClick()}>Save</button>
             </div>
-        onButtuonClick: function(){
-        console.log("111")
-        //var promise = fetch("this.props.id"+"this.props.identity")
-            //promise.then(function(response) { }.bind(this));
-        //if (this.state.condition === false){
-           // alert("done") 
-        //} else {alert("error")}
-    }, 
     },
     onButtuonClick: function(){
         console.log("111")
