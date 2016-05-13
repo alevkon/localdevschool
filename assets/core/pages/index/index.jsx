@@ -19,9 +19,10 @@ module.exports = Registry.registerPage(React.createClass({
     }
   },
 
-  render() {
+  render(){ 
     var self = this;
     var data = this.props.params.data;
+
 
     return <div className="p-index row">
       <div className="col-md-8 col-md-offset-2">
@@ -33,6 +34,13 @@ module.exports = Registry.registerPage(React.createClass({
           <a className="btn btn-danger" href="/mentor" role="button">Start as mentor</a>
         </p>
       </div>
-    </div>
-  }
+
+      <Registry.controls.saver
+        ver={{orig:"pos1", curr:"pos2"}}
+        identity="unit"
+        id="id">Save unit</Registry.controls.saver>
+    </div>;
+  },
+
+
 }));
