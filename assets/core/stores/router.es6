@@ -20,6 +20,10 @@ var Router = module.exports = Reflux.createStore({
         }
       }
     },
+    "/test": {
+      page: "test",
+      single: true
+    },
 
     //this should be last line, todo: replace with 404 page
     "/*": "404"

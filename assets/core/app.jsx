@@ -14,6 +14,7 @@ var App = {
     }
 
     var routes = Router.getCompiledRoutes();
+
     ReactDOM.render(<ReactRouter.Router
       createElement = { createElement }
       history={ history }

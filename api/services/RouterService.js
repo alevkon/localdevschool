@@ -12,7 +12,7 @@ module.exports = {
   routeConfig: null,
   loaders: {},
 
-  init(a) {
+  init() {
     //RouterService.routeConfig = RouterService.pageRoutesToReact(sails.config.platform.pageRoutes);
     RouterService.routeConfig = Router.getCompiledRoutes();
     ReactRouter.createRoutes(RouterService.routeConfig);
@@ -42,7 +42,6 @@ module.exports = {
   },
 
   serve(req, res) {
-//console.log(777);
     ReactRouter.match({
       routes: module.exports.routeConfig,
       location: req.originalUrl

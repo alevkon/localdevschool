@@ -34,6 +34,8 @@ var jsCore = []
     .concat("core/mixins/**/*.es6")
     .concat("core/stores/**/*.es6")
     .concat("core/components/**/*.js*")
+    .concat("core/controls/**/*.js*")
+    .concat("core/controls/**/*.es6")
     .concat("core/components/**/*.es6")
     .concat("core/semanticles/**/*.js*")
     .concat("core/semanticles/**/*.es6")
@@ -65,6 +67,7 @@ module.exports.jsFilesToInject = jsLibs.map(function(path) {
   "core/stores/editor.js",
   "core/stores/*.js",
   "core/components/**/*.js",
+  "core/controls/**/*.js",
   "core/semanticles/**/*.js",
   "**/*.js"
 ]).map(function(path) {

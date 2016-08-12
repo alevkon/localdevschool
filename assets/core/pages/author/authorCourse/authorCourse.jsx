@@ -9,10 +9,13 @@ module.exports = Registry.registerPage(React.createClass({
   mixins: [
     Reflux.listenTo(Context, "onContextEvent")
   ],
+  getInitialState: function() {
+    return this.props.params.data.units[0].course;
 
+  },
   statics: {
     getTitle(data) {
-      return "Course #" + data.course.id;
+      return data.units[0].course.title;
     }
   },
 
@@ -24,20 +27,33 @@ module.exports = Registry.registerPage(React.createClass({
     }
   },
 
+  updateComponent(current) {
+    this.setState(current);
+  },
+
   render() {
-    var self = this;
-    var data = this.props.params.data;
 
     return <div className="p-authorCourse page page_has_toolbar">
-      <h1>Course #{ data.course.id }</h1>
+      <h1>{this.state.title}</h1>
 
-      <p>Course description</p>
+      <p>{this.state.description}</p>
+
+      <Registry.pages.editor
+        dataToEdit={this.state}
+        upd={this.updateComponent.bind(this)}
+        identity="course">Edit course</Registry.pages.editor>
+
       <h2>Course units</h2>
       <ul>
-        <li><a href={ "/author/course/" + data.course.id + "/unit/1" }>Unit 1</a></li>
-        <li><a href={ "/author/course/" + data.course.id + "/unit/2" }>Unit 2</a></li>
-        <li><a href={ "/author/course/" + data.course.id + "/unit/3" }>Unit 3</a></li>
+        {this.props.params.data.units.map(function(unit) {
+          return <li key={unit.id} id={unit.id}>
+              <a href={'/author/course/' + unit.course.id + '/unit/' + unit.id}>{unit.title}</a>
+            </li>
+        })}
       </ul>
+
     </div>
   }
 }));
+
+

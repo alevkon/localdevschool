@@ -7,7 +7,7 @@ module.exports = Registry.registerPage(React.createClass({
   displayName: "authorIndex",
 
   mixins: [
-    Reflux.listenTo(Context, "onContextEvent"),
+    Reflux.listenTo(Context, "onContextEvent")
   ],
 
   statics: {
@@ -25,17 +25,17 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
-    var self = this;
-    var data = this.props.params.data;
-
     return <div className="author">
       <h1>Author</h1>
       <p>Author page description</p>
       <h2>Your courses</h2>
       <ul>
-        <li><a href="/author/course/1">Course 1</a></li>
-        <li><a href="/author/course/2">Course 2</a></li>
-        <li><a href="/author/course/3">Course 3</a></li>
+        {this.props.params.data.courses.map(function(course) {
+          return <li key={course.id} id={course.id}>
+              <a href={'/author/course/' + course.id}> {course.title} </a>
+          </li>
+        })
+        }
       </ul>
       <h2>Course navigator</h2>
       <ul>

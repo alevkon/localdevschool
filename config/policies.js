@@ -18,5 +18,7 @@
 
 module.exports.policies = {
   "*": false,
-  page: true
+  page: true,
+  unit: true,
+  course: true
 };

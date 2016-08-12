@@ -7,7 +7,7 @@ module.exports = Registry.registerPage(React.createClass({
   displayName: "author",
 
   mixins: [
-    Reflux.listenTo(Context, "onContextEvent"),
+    Reflux.listenTo(Context, "onContextEvent")
   ],
 
   onContextEvent(event) {
@@ -19,8 +19,7 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
-    var self = this;
-//console.log(this.props);
+    console.log(this.props);
     return <div className="p-author page page_has-toolbar">
       <Registry.controls.toolbar routes={ this.props.routes} params={ this.props.params } />
       <div className="row">

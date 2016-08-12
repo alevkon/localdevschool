@@ -9,4 +9,4 @@ module.exports = {
       maxLength: 2000
     }
   }
-}
+};

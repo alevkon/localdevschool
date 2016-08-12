@@ -2,7 +2,6 @@ var React = require("react");
 var Reflux = require("reflux");
 var Registry = require("../../stores/registry");
 var Context = require("../../stores/context");
-var Saver = require("../../stores/saver");
 
 module.exports = Registry.registerPage(React.createClass({
   displayName: "index",
@@ -20,7 +19,6 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
-    var self = this;
     var data = this.props.params.data;
 
     return <div className="p-index row">
