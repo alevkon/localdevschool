@@ -19,7 +19,6 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
-    console.log(this.props);
     return <div className="p-author page page_has-toolbar">
       <Registry.controls.toolbar routes={ this.props.routes} params={ this.props.params } />
       <div className="row">
