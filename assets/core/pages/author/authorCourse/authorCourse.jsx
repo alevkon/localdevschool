@@ -32,26 +32,34 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
-
     return <div className="p-authorCourse page page_has_toolbar">
       <h1>{this.state.title}</h1>
 
       <p>{this.state.description}</p>
 
       <Registry.pages.editor
-        dataToEdit={this.state}
+        data={this.state}
         upd={this.updateComponent.bind(this)}
-        identity="course">Edit course</Registry.pages.editor>
+        identity="course">Edit course
+      </Registry.pages.editor>
 
       <h2>Course units</h2>
+
       <ul>
-        {this.props.params.data.units.map(function(unit) {
+        {this.props.params.data.units[0].empty
+          ? <div></div>
+          : this.props.params.data.units.map(function(unit) {
           return <li key={unit.id} id={unit.id}>
-              <a href={'/author/course/' + unit.course.id + '/unit/' + unit.id}>{unit.title}</a>
+              <a href={'/author/course/' + unit.course.slug + '/unit/' + unit.slug}>{unit.title}</a>
             </li>
         })}
       </ul>
-
+      <Registry.pages.editor
+        create={true}
+        data={this.props.params.data.units[0]}
+        upd={this.updateComponent.bind(this)}
+        identity="unit">Create new unit
+      </Registry.pages.editor>
     </div>
   }
 }));

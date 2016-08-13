@@ -1,5 +1,5 @@
 RouterService.loaders["authorUnit"] = function(req, context, callback) {
-  Unit.findOne({id: context.params.unit}, function(err, unit) {
+  Unit.findOne({slug: context.params.unit_slug}, function(err, unit) {
     if (err) return callback(err);
     var data = {
       unit: unit

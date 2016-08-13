@@ -41,7 +41,7 @@ module.exports = Registry.registerPage(React.createClass({
       <p>{ description }</p><br/>
       <Registry.pages.editor
         upd={this.updateComponent.bind(this)}
-        dataToEdit={this.state}
+        data={this.state}
         identity="unit">Edit unit</Registry.pages.editor>
     </div>
   }

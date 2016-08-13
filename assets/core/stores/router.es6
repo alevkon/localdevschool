@@ -12,10 +12,10 @@ var Router = module.exports = Reflux.createStore({
       page: "author",
       indexRoute: "authorIndex",
       childRoutes: {
-        "course/:course": {
+        "course/:course_slug": {
           indexRoute: "authorCourse",
           childRoutes: {
-            "unit/:unit": "authorUnit"
+            "unit/:unit_slug": "authorUnit"
           }
         }
       }

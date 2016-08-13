@@ -7,6 +7,11 @@ module.exports = {
     description: {
       type: "string",
       maxLength: 2000
+    },
+    slug: {
+      type: 'string',
+      maxLength: 300,
+      unique: true
     }
   }
 };
