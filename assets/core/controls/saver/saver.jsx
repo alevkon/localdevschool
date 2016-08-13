@@ -4,6 +4,14 @@ var Registry = require("../../stores/registry");
 module.exports = Registry.registerControl(React.createClass({
   displayName: "saver",
 
+  convertToSlug: function(str) {
+    return str
+      .toLowerCase()
+      .replace(/[^\w ]+/g,'')
+      .replace(/ +/g,'-')
+      ;
+  },
+
   onClickHandler: function() {
     var self = this, json;
 
@@ -20,18 +28,34 @@ module.exports = Registry.registerControl(React.createClass({
           default:
             break;
         }
+        if (!this.props.versions.current['slug']) this.props.versions.current['slug'] =
+          this.convertToSlug(this.props.versions.current.title);
+
         json = JSON.stringify(this.props.versions.current);
         fetch('/api/' + this.props.identity, {method: 'POST', body: json})
           .then(function (response) {
             if (response.ok) {
-              
-              // window.location = '/author'
+              switch(self.props.identity) {
+                case 'course':
+                  window.location = '/author/' + self.props.versions.current.slug;
+                  break;
+                case 'unit':
+                  window.location = '/author/' +
+                    self.props.data.course.slug +
+                    '/unit/' +
+                    self.props.versions.current.slug;
+                  break;
+                default: break;
+              }
+
+
             } else {
               alert('Error!')
             }
           });
       }
     } else {
+      this.props.versions.current['slug'] = this.convertToSlug(this.props.versions.current.title);
       json = JSON.stringify(this.props.versions.current);
       fetch('/api/' + this.props.identity + '/' + this.props.data.id, {method: 'PUT', body: json})
         .then(function (response) {
