@@ -1,5 +1,8 @@
 module.exports = {
   attributes: {
+    author: {
+      model: "author"
+    },
     title: {
       type: "string",
       maxLength:300

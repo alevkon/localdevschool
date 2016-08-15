@@ -32,6 +32,7 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
+    var self = this;
     return <div className="p-authorCourse page page_has_toolbar">
       <h1>{this.state.title}</h1>
 
@@ -50,7 +51,13 @@ module.exports = Registry.registerPage(React.createClass({
           ? <div></div>
           : this.props.params.data.units.map(function(unit) {
           return <li key={unit.id} id={unit.id}>
-              <a href={'/author/course/' + unit.course.slug + '/unit/' + unit.slug}>{unit.title}</a>
+              <a href={'/author/'
+              + self.props.params.data.author.slug
+              + '/course/'
+              + unit.course.slug
+              + '/unit/'
+              + unit.slug}>
+                {unit.title}</a>
             </li>
         })}
       </ul>
@@ -58,6 +65,7 @@ module.exports = Registry.registerPage(React.createClass({
         create={true}
         data={this.props.params.data.units[0]}
         upd={this.updateComponent.bind(this)}
+        author={this.props.params.data.author}
         identity="unit">Create new unit
       </Registry.pages.editor>
     </div>

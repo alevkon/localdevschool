@@ -1,5 +1,5 @@
-RouterService.loaders["authorCourse"] = function(req, context, callback) {
-  Course.findOne({slug: context.params.course_slug}).exec(function(err, course) {
+RouterService.loaders["authorCourse"] = function(req, res, context, callback) {
+  Course.findOne({slug: context.params.course_slug}).populate('author').exec(function(err, course) {
     if (err) return callback(err);
     Unit.find({course: course.id}).populate('course').exec( function(err, units) {
       if (err) return callback(err);
@@ -10,13 +10,15 @@ RouterService.loaders["authorCourse"] = function(req, context, callback) {
         unitsFake[0].title = '';
         unitsFake[0].description = '';
         var data = {
-          units: unitsFake
+          units: unitsFake,
+          author: course.author
         };
         callback(null, data);
 
       } else {
         data = {
-          units: units
+          units: units,
+          author: course.author
         };
         callback(null, data);
       }

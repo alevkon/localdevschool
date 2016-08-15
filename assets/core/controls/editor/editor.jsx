@@ -45,7 +45,8 @@ module.exports = Registry.registerPage(React.createClass({
         key != 'course' &&
         key != 'unit' &&
         key != 'empty' &&
-        key != 'slug'
+        key != 'slug' &&
+        key != 'author'
     });
   },
 
@@ -59,7 +60,6 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
-
     var self = this;
     if (this.state.expand) {
       return <div className="page page_has_toolbar">
@@ -85,6 +85,7 @@ module.exports = Registry.registerPage(React.createClass({
             }
           }
           create={this.props.create}
+          author={this.props.author}
           identity={this.props.identity}
           upd={this.updateComponent.bind(this)}
           data={this.props.data}>Save unit</Registry.controls.saver>

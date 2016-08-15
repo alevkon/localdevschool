@@ -12,7 +12,7 @@ module.exports = Registry.registerPage(React.createClass({
 
   statics: {
     getTitle(data) {
-      return "Author dashboard";
+      return data.author.name + ' dashboard';
     }
   },
 
@@ -33,14 +33,16 @@ module.exports = Registry.registerPage(React.createClass({
   },
 
   render() {
+    var self = this;
+    var author = this.props.params.data.author;
     return <div className="author">
-      <h1>Author</h1>
+      <h1>{author.name}</h1>
       <p>Author page description</p>
       <h2>Your courses</h2>
       <ul>
         {this.state.courses.map(function(course) {
           return <li key={course.id} id={course.id}>
-              <a href={'/author/course/' + course.slug}> {course.title} </a>
+              <a href={'/author/' + author.slug + '/course/' + course.slug}> {course.title} </a>
           </li>
         })
         }
@@ -48,6 +50,7 @@ module.exports = Registry.registerPage(React.createClass({
       <Registry.pages.editor
         create={true}
         data={this.state.courses[0]}
+        author={this.state.author}
         identity="course"
         upd={this.updateComponent.bind(this)}>
         Create new course

@@ -1,5 +1,6 @@
 var React = require("react");
 var Registry = require("../../stores/registry");
+var Router = require('react-router');
 
 module.exports = Registry.registerControl(React.createClass({
   displayName: "saver",
@@ -13,6 +14,7 @@ module.exports = Registry.registerControl(React.createClass({
   },
 
   onClickHandler: function() {
+
     var self = this, json;
 
 
@@ -25,9 +27,13 @@ module.exports = Registry.registerControl(React.createClass({
           case 'unit':
             this.props.versions.current['course'] = this.props.data.course.id;
             break;
+          case 'course':
+            this.props.versions.current['author'] = this.props.author;
+            break;
           default:
             break;
         }
+
         if (!this.props.versions.current['slug']) this.props.versions.current['slug'] =
           this.convertToSlug(this.props.versions.current.title);
 
@@ -37,10 +43,10 @@ module.exports = Registry.registerControl(React.createClass({
             if (response.ok) {
               switch(self.props.identity) {
                 case 'course':
-                  window.location = '/author/' + self.props.versions.current.slug;
+                  window.location = '/author/' + self.props.author.slug + '/course/' + self.props.versions.current.slug;
                   break;
                 case 'unit':
-                  window.location = '/author/' +
+                  window.location = '/author/' + self.props.author.slug + '/course/' +
                     self.props.data.course.slug +
                     '/unit/' +
                     self.props.versions.current.slug;
