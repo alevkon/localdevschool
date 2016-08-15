@@ -12,7 +12,7 @@ module.exports = {
   routeConfig: null,
   loaders: {},
 
-  init(a) {
+  init() {
     //RouterService.routeConfig = RouterService.pageRoutesToReact(sails.config.platform.pageRoutes);
     RouterService.routeConfig = Router.getCompiledRoutes();
     ReactRouter.createRoutes(RouterService.routeConfig);
@@ -42,7 +42,6 @@ module.exports = {
   },
 
   serve(req, res) {
-//console.log(777);
     ReactRouter.match({
       routes: module.exports.routeConfig,
       location: req.originalUrl
@@ -66,7 +65,7 @@ module.exports = {
           var loader = module.exports.loaders[component.loaderKey || component.displayName];
           if (!loader) return callback();
           //if (!module.exports.loaders[component.displayName]) return callback(new Error("Component data loader not found"));
-          loader(req, renderProps, (err, result) => {
+          loader(req, res, renderProps, (err, result) => {
             if (err) return callback(err);
             _.extend(data, result);
             callback();
@@ -79,7 +78,7 @@ module.exports = {
 //        renderProps.components = _.filter(renderProps.components, component => component.displayName !== "fake");
 //console.log(999, renderProps.components);
         try {
-          var content = ReactDOM.renderToString(<ReactRouter.RoutingContext {...renderProps} />)
+          var content = ReactDOM.renderToString(<ReactRouter.RoutingContext {...renderProps} />);
           res.view("page.ejs", {
             content: content,
             data: data

@@ -18,5 +18,29 @@
 
 module.exports.policies = {
   "*": false,
-  page: true
+
+  PageController: {
+    '*': 'author'
+  },
+  UnitController: {
+    create: 'inject-owner',
+    update: 'check-rights',
+    find: true,
+    findOne: true,
+    destroy: 'check-rights'
+  },
+  CourseController: {
+    create: 'inject-owner',
+    update: 'check-rights',
+    find: true,
+    findOne: true,
+    destroy: 'check-rights'
+  },
+  AuthorController: {
+    create: true,
+    update: false,
+    find: true,
+    findOne: true,
+    destroy: false
+  }
 };

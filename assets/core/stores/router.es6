@@ -8,18 +8,28 @@ var Router = module.exports = Reflux.createStore({
       page: "index",
       single: true
     },
-    "/author": {
+    "/author/:author_slug": {
       page: "author",
       indexRoute: "authorIndex",
       childRoutes: {
-        "course/:course": {
+        "course/:course_slug": {
           indexRoute: "authorCourse",
           childRoutes: {
-            "unit/:unit": "authorUnit"
+            "unit/:unit_slug": "authorUnit"
           }
         }
       }
     },
+    "/authorSignIn": {
+      page: "authorSignIn",
+      single: true
+    },
+
+    "/authorRegistration": {
+      page: "authorRegistration",
+      single: true
+    },
+
 
     //this should be last line, todo: replace with 404 page
     "/*": "404"
